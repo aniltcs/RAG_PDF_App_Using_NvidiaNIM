@@ -21,7 +21,7 @@ def vector_embedding(api_key: str):
 
 st.title("PDFs Q&A App using Nvidia NIM and Langchain")
 ## Input the Nvidia NIM API Key
-api_key=st.text_input("Enter your Groq API key:",type="password")
+api_key=st.text_input("Enter your Nvidia NIM API key:",type="password")
 
 if not api_key:
     st.warning("Please provide NVIDIA NIM Api Key")
