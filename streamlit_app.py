@@ -7,11 +7,11 @@ from langchain_community.document_loaders import PyPDFDirectoryLoader
 import time
 from langchain_core.runnables import RunnablePassthrough
 
-def vector_embedding():
+def vector_embedding(api_key: str):
 
     if "vectors" not in st.session_state:
 
-        st.session_state.embeddings=NVIDIAEmbeddings()
+        st.session_state.embeddings=NVIDIAEmbeddings(api_key=api_key)
         st.session_state.loader=PyPDFDirectoryLoader("./us_census") ## Data Ingestion
         st.session_state.docs=st.session_state.loader.load() ## Document Loading
         st.session_state.text_splitter=RecursiveCharacterTextSplitter(chunk_size=700,chunk_overlap=50) ## Chunk Creation
@@ -47,7 +47,7 @@ Questions:{input}
 user_prompt=st.text_input("Enter Your Question From Doduments")
 
 if st.button("Documents Embedding"):
-    vector_embedding()
+    vector_embedding(api_key)
     st.write("Vector Store DB Is Ready")
 
 
